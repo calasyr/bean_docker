@@ -8,20 +8,26 @@ module BeanDocker
   class Docker
     def run
       image_name = "aws_beanstalk/current-app:latest"
+      envvar_file_name = '/opt/elasticbeanstalk/deploy/configuration/containerconfiguration'
 
-      container_config = JSON.parse(File.read('/opt/elasticbeanstalk/deploy/configuration/containerconfiguration'))
-      raw_vars =  container_config['optionsettings']['aws:elasticbeanstalk:application:environment']
+      begin
+        container_config = JSON.parse(File.read(envvar_file_name))
+        raw_vars =  container_config['optionsettings']['aws:elasticbeanstalk:application:environment']
 
-      alias_line = "sudo docker run -ti -w=\"/usr/src/app\""
+        alias_line = "sudo docker run -ti -w=\"/usr/src/app\""
 
-      raw_vars.each do |raw_var|
-        variable, value = raw_var.split('=')
-        if value # && !value.include?('`')
-          alias_line += " --env #{variable}=\"#{value.shellescape}\" "
+        raw_vars.each do |raw_var|
+          variable, value = raw_var.split('=')
+          if value # && !value.include?('`')
+            alias_line += " --env #{variable}=\"#{value.shellescape}\" "
+          end
         end
-      end
 
-      exec("#{alias_line} #{image_name} bash" )
+        exec("#{alias_line} #{image_name} bash" )
+      rescue => exception
+        puts "Exception: #{exception}"
+        puts "Most likely, cannot read #{envvar_file_name}"
+      end
     end
   end
 end
