@@ -28,9 +28,9 @@ module BeanDocker
             end
           end
 
-          exec("#{alias_line} #{image_name} bash" )
-
           puts "Protect the environmant variables file with: sudo chmod 660 #{envvar_file_name}"
+
+          exec("#{alias_line} #{image_name} bash" )
         rescue => exception
           puts "Exception: #{exception}"
         end
