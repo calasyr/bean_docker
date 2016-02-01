@@ -14,7 +14,8 @@ module BeanDocker
         container_config = JSON.parse(File.read(envvar_file_name))
       rescue => exception
         puts "Exception: #{exception}"
-        puts "Enable access to this file with: sudo chmod 664 #{envvar_file_name}"
+        puts "Enable access to this file with:\n"
+        puts "  sudo chmod 664 #{envvar_file_name}"
       else
         begin
           raw_vars =  container_config['optionsettings']['aws:elasticbeanstalk:application:environment']
@@ -28,7 +29,8 @@ module BeanDocker
             end
           end
 
-          puts "Protect the environmant variables file with: sudo chmod 660 #{envvar_file_name}"
+          puts "Protect the environmant variables file with:\n"
+          puts "  sudo chmod 660 #{envvar_file_name}"
 
           exec("#{alias_line} #{image_name} bash" )
         rescue => exception
