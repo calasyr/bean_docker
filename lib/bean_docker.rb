@@ -29,7 +29,7 @@ module BeanDocker
             end
           end
 
-          puts "Protect the environmant variables file with:\n"
+          puts "Launching a new container.  To protect the environmant variables file again after you exit this container, use :\n"
           puts "  sudo chmod 660 #{envvar_file_name}"
 
           exec("#{alias_line} #{image_name} bash" )
