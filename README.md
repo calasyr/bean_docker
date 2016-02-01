@@ -6,7 +6,7 @@ that Beanstalk uses to start each new container.
 
 ## Installation
 
-Install with sudo to give the gem access to your environment variables:
+Install this gem on your Elastic Beanstalk Docker instance:
 
     $ gem install bean_docker
 
