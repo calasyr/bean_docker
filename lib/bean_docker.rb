@@ -12,21 +12,28 @@ module BeanDocker
 
       begin
         container_config = JSON.parse(File.read(envvar_file_name))
-        raw_vars =  container_config['optionsettings']['aws:elasticbeanstalk:application:environment']
-
-        alias_line = "sudo docker run -ti -w=\"/usr/src/app\""
-
-        raw_vars.each do |raw_var|
-          variable, value = raw_var.split('=')
-          if value # && !value.include?('`')
-            alias_line += " --env #{variable}=\"#{value.shellescape}\" "
-          end
-        end
-
-        exec("#{alias_line} #{image_name} bash" )
       rescue => exception
         puts "Exception: #{exception}"
-        puts "Most likely, cannot read #{envvar_file_name}"
+        puts "Enable access to this file with: sudo chmod 664 #{envvar_file_name}"
+      else
+        begin
+          raw_vars =  container_config['optionsettings']['aws:elasticbeanstalk:application:environment']
+
+          alias_line = "sudo docker run -ti -w=\"/usr/src/app\""
+
+          raw_vars.each do |raw_var|
+            variable, value = raw_var.split('=')
+            if value # && !value.include?('`')
+              alias_line += " --env #{variable}=\"#{value.shellescape}\" "
+            end
+          end
+
+          exec("#{alias_line} #{image_name} bash" )
+
+          puts "Protect the environmant variables file with: sudo chmod 660 #{envvar_file_name}"
+        rescue => exception
+          puts "Exception: #{exception}"
+        end
       end
     end
   end

@@ -4,11 +4,9 @@ BeanDocker gives you the ability to create additional docker containers using th
 that Beanstalk uses to start each new container.
   
 
-
-
 ## Installation
 
-Install:
+Install with sudo to give the gem access to your environment variables:
 
     $ gem install bean_docker
 
@@ -16,11 +14,11 @@ Install:
 
 To launch a new container on an Elastic Beanstalk docker instance:
 
-    $ sudo bean_docker
+    $ bdrun
 
 ## Development
 
-Still experimental.  You have to relax permissions on a file to get this to work.
+Still experimental.
 
 ## Contributing
 
