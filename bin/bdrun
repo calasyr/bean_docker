@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'bean_docker'
+
+docker = BeanDocker::Docker.new  
+docker.run  
