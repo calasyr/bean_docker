@@ -20,7 +20,7 @@ To launch a new container on an Elastic Beanstalk docker instance:
 
 ## Development
 
-Still experimental.  You have to run the executable with sudo or relax permissions on a key file.  While I've gotten the code to work, I've not gotten it to run as part of the gem yet.
+Still experimental.  You have to relax permissions on a file to get this to work.
 
 ## Contributing
 
