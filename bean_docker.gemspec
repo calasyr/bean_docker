@@ -21,7 +21,8 @@ Gem::Specification.new do |spec|
   spec.post_install_message = %Q{\nThanks for installing!  To use this gem, you will need to relax the permissions on the file containing your environment variables:\n
     sudo chmod 664 #{envvar_file_name}\n
 And to restore the original permissions:\n
-    sudo chmod 660 #{envvar_file_name}
+    sudo chmod 660 #{envvar_file_name}\n
+To see exactly how these variables are used, see lib/bean_docker.rb
   }
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
