@@ -24,7 +24,7 @@ Then you can used the bdrun command to create a new container:\n
     bdrun\n
 And to restore the original permissions:\n
     sudo chmod 660 #{envvar_file_name}\n
-To see exactly how these variables are used, see lib/bean_docker.rb
+And to see exactly how your sensitive environment variables are used, see lib/bean_docker.rb
   }
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
