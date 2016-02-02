@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.description   = %q{Install this gem directly on an Elastic Beanstalk instance that is running Amazon 
     Linux and Docker.  The environment variables you set for the default instance are used to start the 
     new container.  Useful for running rake tasks in your production environment.}
-  spec.homepage      = "https://www.smartzip.com"
+  spec.homepage      = "https://github.com/calasyr/bean_docker"
   spec.license       = "MIT"
 
   envvar_file_name = '/opt/elasticbeanstalk/deploy/configuration/containerconfiguration'
