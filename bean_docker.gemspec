@@ -20,6 +20,8 @@ Gem::Specification.new do |spec|
 
   spec.post_install_message = %Q{\nThanks for installing!  To use this gem, you will need to relax the permissions on the file containing your environment variables:\n
     sudo chmod 664 #{envvar_file_name}\n
+Then you can used the bdrun command to create a new container:\n
+    bdrun\n
 And to restore the original permissions:\n
     sudo chmod 660 #{envvar_file_name}\n
 To see exactly how these variables are used, see lib/bean_docker.rb
