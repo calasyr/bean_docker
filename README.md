@@ -11,6 +11,14 @@ Install this gem on your Elastic Beanstalk Docker instance:
 
     $ gem install bean_docker
 
+To use this gem, you will need to relax the permissions on the file containing your environment variables:
+
+    $ sudo chmod 664 /opt/elasticbeanstalk/deploy/configuration/containerconfiguration
+
+And to restore the original permissions:
+
+    $ sudo chmod 660 /opt/elasticbeanstalk/deploy/configuration/containerconfiguration
+
 ## Usage
 
 To launch a new container on an Elastic Beanstalk docker instance:
