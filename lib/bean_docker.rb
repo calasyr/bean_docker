@@ -6,7 +6,7 @@ require 'json'
 module BeanDocker
   # Your code goes here...
   class Docker
-    def run
+    def run mode=''
       image_name = "aws_beanstalk/current-app:latest"
       envvar_file_name = '/opt/elasticbeanstalk/deploy/configuration/containerconfiguration'
 
@@ -20,19 +20,26 @@ module BeanDocker
         begin
           raw_vars =  container_config['optionsettings']['aws:elasticbeanstalk:application:environment']
 
-          alias_line = "sudo docker run -ti -w=\"/usr/src/app\""
+          command = "sudo docker run -ti -w=\"/usr/src/app\""
 
           raw_vars.each do |raw_var|
             variable, value = raw_var.split('=')
             if value # && !value.include?('`')
-              alias_line += " --env #{variable}=\"#{value.shellescape}\" "
+              command += " --env #{variable}=\"#{value.shellescape}\" "
             end
           end
 
-          puts "Launching a new container.  To protect the environment variables file again after you exit this container, use:\n"
-          puts "  sudo chmod 660 #{envvar_file_name}"
+          command = "#{command} #{image_name} bash"
 
-          exec("#{alias_line} #{image_name} bash" )
+          if mode == 'show'
+            puts "Command for launching a new container:\n"
+            puts command
+          else
+            puts "Launching a new container.  To protect the environment variables file again after you exit this container, use:\n"
+            puts "  sudo chmod 660 #{envvar_file_name}"
+
+            exec( command )
+          end
         rescue => exception
           puts "Exception: #{exception}"
         end
