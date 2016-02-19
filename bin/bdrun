@@ -3,4 +3,4 @@
 require 'bean_docker'
 
 docker = BeanDocker::Docker.new  
-docker.run  
+docker.run ARGV

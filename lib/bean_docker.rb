@@ -6,7 +6,9 @@ require 'json'
 module BeanDocker
   # Your code goes here...
   class Docker
-    def run mode=''
+    def run(args)
+      mode = args[0] ? args[0] : ''
+
       image_name = "aws_beanstalk/current-app:latest"
       envvar_file_name = '/opt/elasticbeanstalk/deploy/configuration/containerconfiguration'
 
