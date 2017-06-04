@@ -9,21 +9,13 @@ that Beanstalk uses to start each new container.
 
 Install this gem on your Elastic Beanstalk Docker instance:
 
-    $ gem install bean_docker
-
-To use this gem, you will need to relax the permissions on the file containing your environment variables:
-
-    $ sudo chmod 664 /opt/elasticbeanstalk/deploy/configuration/containerconfiguration
-
-And to restore the original permissions:
-
-    $ sudo chmod 660 /opt/elasticbeanstalk/deploy/configuration/containerconfiguration
+    $ sudo gem install bean_docker
 
 ## Usage
 
 To launch a new container on an Elastic Beanstalk docker instance:
 
-    $ bdrun
+    $ sudo /usr/local/bin
 
 ## Development
 
@@ -32,7 +24,6 @@ Still experimental.
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/calasyr/bean_docker. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
 
 ## License
 
