@@ -57,13 +57,13 @@ module BeanDocker
     end
 
     def help?
-      return false if @args.empty?
+      return false unless @args && @args.any?
       
       %w[-h --help help].include? @args[0]
     end
 
     def show?
-      return false if @args.empty?
+      return false unless @args && @args.any?
       
       %w[-s --show show].include? @args[0]
     end
