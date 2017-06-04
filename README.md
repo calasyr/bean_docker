@@ -15,7 +15,7 @@ Install this gem on your Elastic Beanstalk Docker instance:
 
 To launch a new container on an Elastic Beanstalk docker instance:
 
-    $ sudo /usr/local/bin
+    $ sudo /usr/local/bin/bdrun
 
 ## Development
 
