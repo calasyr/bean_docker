@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
   envvar_file_name = '/opt/elasticbeanstalk/deploy/configuration/containerconfiguration'
 
   spec.post_install_message = %Q{\nThanks for installing!  To use this gem:\n
-    sudo /usr/local/bin\n
+    sudo /usr/local/bin/bdrun\n
 To see exactly how your sensitive environment variables are used, see lib/bean_docker.rb
   }
 
