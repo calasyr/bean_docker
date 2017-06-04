@@ -69,11 +69,11 @@ module BeanDocker
     end
 
     def self.mac_os?
-      RbConfig::CONFIG['host_os'].starts_with?('darwin')
+      RbConfig::CONFIG['host_os'].start_with?('darwin')
     end
 
     def self.linux_gnu?
-      RbConfig::CONFIG['host_os'].starts_with?('linux-gnu')
+      RbConfig::CONFIG['host_os'].start_with?('linux-gnu')
     end
 
     def aws_client
