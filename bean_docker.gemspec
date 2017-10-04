@@ -16,10 +16,20 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/calasyr/bean_docker"
   spec.license       = "MIT"
 
-  spec.post_install_message = %Q{\nThanks for installing!  To use this gem on Amazon Linux:\n
-    sudo /usr/local/bin/bdrun\n
-To see exactly how your sensitive environment variables are used, see lib/bean_docker.rb
-  }
+  good_install = %Q{\n  Thanks for installing!  To use this gem on Amazon Linux:\n
+    sudo /usr/local/bin/bdrun\n  To see exactly how your sensitive environment variables are used, see lib/bean_docker.rb
+    }
+
+  bad_install = %Q{\n  Thanks for installing.\n  But it looks like you didn't use sudo to install.\n  You'll need to re-install the gem that way in order to use it.\n
+    }
+  envvar_file_name = '/opt/elasticbeanstalk/deploy/configuration/containerconfiguration'
+
+  begin
+    File.read(envvar_file_name)
+    spec.post_install_message = good_install
+  rescue => exception
+    spec.post_install_message = bad_install
+  end
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
   # delete this section to allow pushing this gem to any host.
