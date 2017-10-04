@@ -25,8 +25,8 @@ module BeanDocker
         container_config = JSON.parse(File.read(envvar_file_name))
       rescue => exception
         puts "The environment variables needed to launch a new Docker container cannot be found."
-        puts "You need to use bdrun as root"
-        puts "  sudo /usr/local/bin/bdrun"
+        puts "You should have installed this gem using sudo.  You can run this command to make these variables accessible:"
+        puts "  sudo chmod 664 #{envvar_file_name}"
       else
         begin
           raw_vars =  container_config['optionsettings']['aws:elasticbeanstalk:application:environment']
