@@ -47,10 +47,15 @@ module BeanDocker
           command = "#{command} #{DOCKER_IMAGE} bash"
 
           if show?
-            puts "Command for launching a new container:\n"
-            puts command
+            puts ""
+            puts "  Command for launching a new container:\n"
+            puts ""
+            puts "    #{command}"
+            puts ""
           else
-            puts "Launching a new container....\n"
+            puts ""
+            puts "  Launching a new container...."
+            puts ""
 
             exec( command )
           end
