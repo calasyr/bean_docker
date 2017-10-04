@@ -8,9 +8,9 @@ CONFIG_PATH = '/opt/elasticbeanstalk/deploy/configuration/containerconfiguration
 module BeanDocker
   class Docker
     def run(args)
-      @args = args[0]
+      @args = args
 
-      puts help_text && return if help?
+      puts Docker.help_text && return if help?
 
       if Docker.mac_os?
         puts "This command can only run on an AWS Elastic Beanstalk instance."
@@ -19,11 +19,12 @@ module BeanDocker
 
       puts "This command has only been tested on Amazon Linux." unless Docker.linux_gnu?
 
+      envvar_file_name = '/opt/elasticbeanstalk/deploy/configuration/containerconfiguration'
 
       begin
         container_config = JSON.parse(File.read(envvar_file_name))
       rescue => exception
-        puts "The environment variables needed to launch a new Docker container are protected"
+        puts "The environment variables needed to launch a new Docker container cannot be found."
         puts "You need to use bdrun as root"
         puts "  sudo /usr/local/bin/bdrun"
       else
@@ -45,8 +46,7 @@ module BeanDocker
             puts "Command for launching a new container:\n"
             puts command
           else
-            puts "Launching a new container.  To protect the environment variables file again after you exit this container, use:\n"
-            puts "  sudo chmod 660 #{envvar_file_name}"
+            puts "Launching a new container....\n"
 
             exec( command )
           end

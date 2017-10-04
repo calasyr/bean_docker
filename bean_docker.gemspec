@@ -16,9 +16,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/calasyr/bean_docker"
   spec.license       = "MIT"
 
-  envvar_file_name = '/opt/elasticbeanstalk/deploy/configuration/containerconfiguration'
-
-  spec.post_install_message = %Q{\nThanks for installing!  To use this gem:\n
+  spec.post_install_message = %Q{\nThanks for installing!  To use this gem on Amazon Linux:\n
     sudo /usr/local/bin/bdrun\n
 To see exactly how your sensitive environment variables are used, see lib/bean_docker.rb
   }
