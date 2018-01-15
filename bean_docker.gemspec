@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = "bean_docker"
   spec.version       = BeanDocker::VERSION
   spec.authors       = ["Alan Brown"]
-  spec.email         = ["abrown@smartzip.com"]
+  spec.email         = ["calasyr@gmail.com"]
 
   spec.summary       = %q{Launch a new Docker container running bash on an Elastic Beanstalk instance. }
   spec.description   = %q{Install this gem directly on an Elastic Beanstalk instance that is running Amazon 
